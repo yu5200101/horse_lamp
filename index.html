@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        #box{
+            width:800px;
+            margin: 50px auto;
+            padding: 0 10px;
+            height: 35px;
+            line-height: 35px;
+            border:1px dashed green;
+            background: lightgreen;
+        }
+        #wrap{
+            height: 35px;
+            overflow: hidden;
+            white-space: nowrap;/*强制文字不换行*/
+        }
+        #wrap span{
+            color:#555;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        #wrap div{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="wrap">
+        <div id="conBegin">
+            <span>暖气原理</span>暖气分为水暖和气暖，通常我们所说的暖气片指的是水暖，就是利用壁挂炉或者锅炉加热循环水，再通过管材链接到暖气片，最终通过暖气片将适宜的温度输出，形成室内温差，最后进行热循环使整个室内温度均匀上升。
+        </div><div id="conEnd">
+            <span>暖气原理</span>暖气分为水暖和气暖，通常我们所说的暖气片指的是水暖，就是利用壁挂炉或者锅炉加热循环水，再通过管材链接到暖气片，最终通过暖气片将适宜的温度输出，形成室内温差，最后进行热循环使整个室内温度均匀上升。
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript">
+    var wrap = document.getElementById('wrap');
+    var conBegin = document.getElementById('conBegin');
+    var conBegin_width = utils.css(conBegin,'width');
+
+    /*var timer = window.setInterval(function () {
+        var curLeft = wrap.scrollLeft;
+        wrap.scrollLeft = curLeft + 1;
+        var newLeft = wrap.scrollLeft;
+        //=>利用了scrollLeft是存在最大值的思想，在累加1之前获取一个值，在累加后再获取一个值，如果两个值相等了，说明累加的是没有作用了->到头了
+        if(curLeft == newLeft){
+            // window.clearInterval(timer);
+            wrap.scrollLeft = 0;//=>虽然从头开始了，但是有一个切换闪动的效果
+        }
+        console.log("ok");
+    },10);*/
+    var timer = window.setInterval(function () {
+        wrap.scrollLeft++;
+        var curLeft = wrap.scrollLeft;
+        if(curLeft >= conBegin_width){
+            wrap.scrollLeft = 0;
+        }
+    },10);
+</script>
+</body>
+</html>
